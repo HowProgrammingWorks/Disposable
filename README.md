@@ -1,2 +1,1 @@
-# Disposable
-Explicit Resource Management
+# Explicit Resource Management
