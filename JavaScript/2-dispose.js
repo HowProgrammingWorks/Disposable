@@ -11,7 +11,6 @@ class Logger {
 
   async #init(path) {
     this.#file = await fs.open(path, 'a');
-    await this.log('Open');
     return this;
   }
 
@@ -22,14 +21,15 @@ class Logger {
     await this.#file?.write(msg + '\n');
   }
 
-  async [Symbol.dispose]() {
-    await this.log('Close');
-    await this.#file?.close();
+  [Symbol.dispose]() {
+    this.#file.close();
+    console.log('File closed (dispose)');
   }
 }
 
 const main = async () => {
-  using logger = await new Logger('./2-using.log');
+  using logger = await new Logger('output.log');
+  await logger.log('Open');
   await logger.log('Do something');
 };
 
