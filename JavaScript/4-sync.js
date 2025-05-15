@@ -38,5 +38,5 @@ const main = async () => {
 };
 
 main().then(() => {
-  console.log('After dispose'); // Will 
+  console.log('After dispose');
 });
