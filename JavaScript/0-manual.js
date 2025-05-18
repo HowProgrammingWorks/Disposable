@@ -21,7 +21,7 @@ class Logger {
     await this.#file.write(msg + '\n');
   }
 
-  close() {
+  async close() {
     return this.#file.close();
   }
 }
