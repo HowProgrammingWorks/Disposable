@@ -40,7 +40,7 @@ class Logger {
 }
 
 const main = async () => {
-  using logger = await new Logger('./output.log');
+  using logger = await new Logger('output.log');
   await logger.log('Open');
   await logger.log('Do something');
 };

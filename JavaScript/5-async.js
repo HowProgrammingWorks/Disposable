@@ -32,7 +32,7 @@ class Logger {
 }
 
 const main = async () => {
-  await using logger = await new Logger('./output.log');
+  await using logger = await new Logger('output.log');
   await logger.log('Open');
   await logger.log('Do something');
 };
