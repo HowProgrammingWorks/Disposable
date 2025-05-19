@@ -9,6 +9,7 @@ class RefCount {
   #dispose = null;
   #context = null;
   #count = 0;
+  #freed = new WeakSet();
 
   constructor(create, dispose) {
     this.#dispose = dispose;
@@ -27,6 +28,8 @@ class RefCount {
     this.#count++;
     const disposable = Object.create(this.#resource);
     disposable[Symbol.asyncDispose] = async () => {
+      if (this.#freed.has(disposable)) return;
+      this.#freed.add(disposable);
       console.log('👉 Dispose');
       this.#count--;
       if (this.#count > 0) return;
