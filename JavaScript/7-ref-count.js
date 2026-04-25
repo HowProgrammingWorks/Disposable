@@ -41,7 +41,7 @@ class RefCount {
 const main = async () => {
   const logger = await new RefCount(
     async () => {
-      const file = 'output.log'
+      const file = 'output.log';
       const fd = await fs.open(file, 'a');
       const stream = fd.createWriteStream(file, { flush: true });
       const resource = new Console({ stdout: stream });

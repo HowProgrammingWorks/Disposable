@@ -18,10 +18,10 @@ class Logger {
     const timestamp = new Date().toISOString();
     const msg = `[${timestamp}] ${message}`;
     console.log(msg);
-    await this.#file?.write(msg + '\n');
+    await this.#file?.write(`${msg}\n`);
   }
 
-  [Symbol.dispose]() {
+  /*[Symbol.dispose]() {
     this.#file.close();
     console.log('File closed (dispose)');
   }
@@ -29,7 +29,7 @@ class Logger {
   async [Symbol.asyncDispose]() {
     await this.#file.close();
     console.log('File closed (async dispose)');
-  }
+  }*/
 }
 
 const main = async () => {

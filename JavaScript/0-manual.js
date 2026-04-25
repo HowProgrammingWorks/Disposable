@@ -18,7 +18,7 @@ class Logger {
     const timestamp = new Date().toISOString();
     const msg = `[${timestamp}] ${message}`;
     console.log(msg);
-    await this.#file.write(msg + '\n');
+    await this.#file.write(`${msg}\n`);
   }
 
   async close() {
