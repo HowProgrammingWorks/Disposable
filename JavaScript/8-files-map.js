@@ -9,7 +9,7 @@ class Logger {
   async use(filename) {
     let instance = this.#files.get(filename);
     if (!instance) {
-      instance = await this.#open(filename);
+      instance = await Logger.#open(filename);
       this.#files.set(filename, instance);
     }
     instance.count++;
@@ -26,7 +26,7 @@ class Logger {
     return disposable;
   }
 
-  async #open(filename) {
+  static async #open(filename) {
     console.log(`👉 Open: ${filename}`);
     const fd = await fs.open(filename, 'a');
     const stream = fd.createWriteStream(filename, { flush: true });
