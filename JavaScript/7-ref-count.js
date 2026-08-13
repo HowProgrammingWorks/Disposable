@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('node:fs/promises');
-const timers = require('timers/promises');
+const timers = require('node:timers/promises');
 const { Console } = require('node:console');
 
 class RefCount {
